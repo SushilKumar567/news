@@ -5,12 +5,16 @@ const News = () => {
   const [articles, setArticles] = useState([])
 
   const fetchNews = async () => {
-    const response = await fetch(
-      "https://newsapi.org/v2/everything?q=tesla&sortBy=publishedAt&apiKey=697fae426e784c57a3db6715866ba29e"
-    )
-    const data = await response.json()
-    // console.log(data)
-    setArticles(data.articles)
+    try {
+      const response = await fetch(
+        "https://newsapi.org/v2/everything?q=tesla&sortBy=publishedAt&apiKey=697fae426e784c57a3db6715866ba29e"
+      )
+      const data = await response.json()
+      // console.log(data)
+      setArticles(data.articles)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {
